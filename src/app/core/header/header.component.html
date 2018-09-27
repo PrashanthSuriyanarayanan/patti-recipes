@@ -1,0 +1,43 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink="/">Patti Recipes</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active">
+          <a routerLink="/recipes">Recipes</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/cart">Shopping List</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <ng-template [ngIf]="!(authState | async).authenticated">
+          <li routerLinkActive="active">
+            <a [routerLink]="['/signup']">Register</a>
+          </li>
+          <li routerLinkActive="active">
+            <a [routerLink]="['/signin']">Login</a>
+          </li>
+        </ng-template>
+        <li class="dropdown" appDropdown *ngIf="(authState | async).authenticated">
+          <a style="cursor: pointer;" class="dropdown-toggle" role="button">
+            Action <span class="caret dropdown-toggle"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a style="cursor: pointer;" (click)="onSave()">Save Data</a>
+            </li>
+            <li>
+              <a style="cursor: pointer;" (click)="onFetch()">Fetch Data</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a style="cursor: pointer;" (click)="onLogout()" *ngIf="(authState | async).authenticated">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

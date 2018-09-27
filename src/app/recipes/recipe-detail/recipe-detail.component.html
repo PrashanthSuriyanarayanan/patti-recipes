@@ -1,0 +1,38 @@
+<div class="media">
+  <div class="media-left">
+    <img [src]="selectedRecipe.imagePath" alt="" class="img-responsive img-thumbnail" style="max-height: 250px; max-width: 300px">
+  </div>
+  <div class="media-body">
+    <h1>{{ selectedRecipe.name }}</h1>
+    <p style="height: 43px; overflow: hidden">{{ selectedRecipe.description }}</p>
+    <div class="btn-group" appDropdown>
+      <button type="button" class="btn btn-primary dropdown-toggle">
+        Manage Recipe
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li>
+          <a (click)="addToCart();">Add to cart</a>
+        </li>
+        <li>
+          <a (click)="editRecipe()">Edit Recipe</a>
+        </li>
+        <li>
+          <a (click)="deleteRecipe()">Delete Recipe</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<br>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <h3>Ingredients:</h3>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let ingredient of selectedRecipe.ingredients;">
+        {{ ingredient.name }} - {{ ingredient.amount }}
+      </li>
+    </ul>
+  </div>
+</div>

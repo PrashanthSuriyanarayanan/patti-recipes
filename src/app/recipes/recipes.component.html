@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-xs-12 col-md-5">
+    <app-recipe-list></app-recipe-list>
+  </div>
+  <div class="col-xs-12 col-md-7">
+    <div class="thumbnail" style="padding: 15px; margin-top: 74px">
+      <router-outlet></router-outlet>
+    </div>
+
+    <!-- <app-recipe-detail *ngIf="selectedRecipe; else infoMsg">
+    </app-recipe-detail>
+    <ng-template #infoMsg>
+      <p class="alert alert-info">Please select a recipe to view the details</p>
+    </ng-template> -->
+  </div>
+</div>
